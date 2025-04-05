@@ -1,0 +1,24 @@
+---
+description: Governs application logic design in Spring Boot projects, defining the roles and responsibilities of RestControllers, Services, Repositories, and DTOs.
+globs: 
+alwaysApply: false
+---
+---
+description: Governs application logic design in Spring Boot projects, defining the roles and responsibilities of RestControllers, Services, Repositories, and DTOs.
+globs: **/src/main/java/**/*
+---
+- Framework: Java Spring Boot 3 Maven with Java 21 Dependencies: Spring Web, Spring Data JPA, PostgreSQL driver
+- All request and response handling must be done only in RestController.
+- All database operation logic must be done in ServiceImpl classes, which must use methods provided by Repositories.
+- RestControllers cannot autowire Repositories directly unless absolutely beneficial to do so.
+- ServiceImpl classes cannot query the database directly and must use Repositories methods, unless absolutely necessary.
+- Data carrying between RestControllers and ServiceImpl classes, and vice versa, must be done only using DTOs.
+- Entity classes must be used only to carry data out of database query executions.
+- Each feature or domain must have its own directory inside the `modules/` folder.
+- Inside each domain-specific directory, the following subdirectories must be created:
+  - `controllers/`: for HTTP layer and REST API endpoints.
+  - `services/`: for business logic and service layer classes.
+  - `entities/`: for domain models and persistence-related classes.
+  - (Optionally) `exceptions/`, `dtos/`, `repositories/`, or other folders relevant to the domain.
+- Cross-cutting concerns (e.g., shared utilities, base exceptions) must not be placed inside feature folders. Include this in `commons` folder.
+- The structure must aim to encapsulate each feature's logic independently, promoting scalability and maintainability.

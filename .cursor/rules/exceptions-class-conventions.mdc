@@ -1,0 +1,12 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: Defines the structure and implementation of exceptions classes, enforcing the use of the generic class.
+globs: **/modules/**/exceptions/*.java
+---
+- Must be extended from [GenericException.java](mdc:src/main/java/br/com/igormartinez/omnitask/commons/exceptions/GenericException.java), unless specified in a prompt otherwise.
+- Must assign the `statusCode` field with the appropriate HTTP status code according to HTTP conventions.
+- Must provide a `key` parameter that corresponds to a message key in a `.properties` file, which will be used for internationalized error messages.
