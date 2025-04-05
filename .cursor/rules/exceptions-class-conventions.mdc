@@ -9,4 +9,6 @@ globs: **/modules/**/exceptions/*.java
 ---
 - Must be extended from [GenericException.java](mdc:src/main/java/br/com/igormartinez/omnitask/commons/exceptions/GenericException.java), unless specified in a prompt otherwise.
 - Must assign the `statusCode` field with the appropriate HTTP status code according to HTTP conventions.
-- Must provide a `key` parameter that corresponds to a message key in a `.properties` file, which will be used for internationalized error messages.
+- Must provide a `key` parameter that corresponds to a message key in the `message.properties` file, which will be used for internationalized error messages. 
+- The values provided in statusCode and key must be provided inside a empty constructor.
+- Every new key must be added in all the `message.properties` files and include a respective language message.
